@@ -79,7 +79,7 @@
 		713F392227FB4F770084633A = {
 			isa = PBXGroup;
 			children = (
-				713F392D27FB4F770084633A /* Project1 */,
+				713F392D27FB4F770084633A /* Project1_StormViewer */,
 				713F392C27FB4F770084633A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,7 +92,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		713F392D27FB4F770084633A /* Project1 */ = {
+		713F392D27FB4F770084633A /* Project1_StormViewer */ = {
 			isa = PBXGroup;
 			children = (
 				713F392E27FB4F770084633A /* AppDelegate.swift */,
@@ -105,7 +105,7 @@
 				710301FA27FB510B0034A416 /* Content */,
 				713F393C27FB4F790084633A /* Info.plist */,
 			);
-			path = Project1;
+			path = Project1_StormViewer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M6Z8JUW5F9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Project1/Info.plist;
+				INFOPLIST_FILE = Project1_StormViewer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -369,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M6Z8JUW5F9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Project1/Info.plist;
+				INFOPLIST_FILE = Project1_StormViewer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let buttonView = UIImage(systemName: "graduationcap.fill")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: buttonView, style: .plain, target: self, action: #selector(showScore))
+        
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
         button1.layer.borderWidth = 1
@@ -73,6 +77,14 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: buttonText, style: .default, handler: askQuestion))
+        
+        present(ac, animated: true)
+    }
+    
+    @objc func showScore() {
+        let ac = UIAlertController(title: "Score", message: "\(score) points", preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "Continue", style: .default))
         
         present(ac, animated: true)
     }

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     var numberQuestions = 0
+    var bestScore = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,18 @@ class ViewController: UIViewController {
         let buttonView = UIImage(systemName: "graduationcap.fill")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: buttonView, style: .plain, target: self, action: #selector(showScore))
+        
+        let defaults = UserDefaults.standard
+        
+        if let savedScore = defaults.object(forKey: "bestScore") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                bestScore = try jsonDecoder.decode(Int.self, from: savedScore)
+            } catch {
+                print("Failed to load best score.")
+            }
+        }
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
@@ -65,7 +78,14 @@ class ViewController: UIViewController {
             message = "It was \(countries[sender.tag].uppercased()). Your score is \(score)."
         }
         
-        if numberQuestions == 10 {
+        if numberQuestions == 10 && score > bestScore {
+            bestScore = score
+            save()
+            title = "New best score !"
+            message = "Your new best score is \(bestScore)."
+            buttonText = "Restart"
+            score = 0
+        } else if numberQuestions == 10 {
             message += " You answered 10 questions."
             buttonText = "Restart"
             score = 0
@@ -82,11 +102,21 @@ class ViewController: UIViewController {
     }
     
     @objc func showScore() {
-        let ac = UIAlertController(title: "Score", message: "\(score) points", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Best score", message: "\(bestScore) points", preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: "Continue", style: .default))
         
         present(ac, animated: true)
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(bestScore) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "bestScore")
+        } else {
+            print("Failed to save score.")
+        }
     }
     
 }
